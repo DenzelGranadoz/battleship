@@ -9,6 +9,8 @@
         "no-unused-vars": "warn",
         "no-console": "warn",
         "prefer-template": "warn",
-        "no-plusplus": "warn"
+        "no-plusplus": "warn",
+        "no-undef": "warn",
+        "consistent-return": "off"
     }
 }
