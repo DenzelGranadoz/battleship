@@ -24,9 +24,21 @@ const GameBoard = () => {
     }
   };
 
+  const carrier = Ship(5);
+  const placeShip = (length, direction, xCoord, yCoord) => {
+    let x = xCoord;
+    let y = yCoord;
+    for (let i = 0; i < length; i++) {
+      board[x][y] = 'ship';
+      if (direction === 'horizontal') x += 1;
+      if (direction === 'vertical') y += 1;
+    }
+  };
+
   createBoard();
   return {
     board,
+    placeShip,
   };
 };
 
