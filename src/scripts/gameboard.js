@@ -1,18 +1,5 @@
 import Ship from './ship';
 
-// first create a board - done
-
-// Gameboards should be able to place ships at specific coordinates by calling the ship factory function.
-// ship = shiplength
-// GameBoard.placeship parameters would be the ship direction and the starting coord
-// replace board index with ships based on the parameters of placeship
-// place ship using coords?
-
-// if tile has ship return marker?
-// recieve attack
-// missed attack
-// report if all ships has been sunk, create the 5 ships first
-
 const GameBoard = () => {
   const board = [];
   const createBoard = () => {
@@ -24,14 +11,26 @@ const GameBoard = () => {
     }
   };
 
-  const carrier = Ship(5);
-  const placeShip = (length, direction, xCoord, yCoord) => {
-    let x = xCoord;
-    let y = yCoord;
-    for (let i = 0; i < length; i++) {
-      board[x][y] = 'ship';
-      if (direction === 'horizontal') x += 1;
-      if (direction === 'vertical') y += 1;
+  const placeShip = (length, direction, coord) => {
+    const x = coord[0];
+    const y = coord[1];
+    if (board[x][y]) return false;
+    const ship = Ship(length);
+    if (direction === 'horizontal') {
+      if (y + ship.length > 10) return false;
+      let shipCount = 0;
+      for (let i = y; i < y + ship.length; i++) {
+        board[x].splice(i, 1, { ship, shipCount });
+        shipCount += 1;
+      }
+    }
+    if (direction === 'vertical') {
+      if (x + ship.length > 10) return false;
+      let shipCount = 0;
+      for (let i = x; i < x + ship.length; i++) {
+        board[i].splice(y, 1, { ship, shipCount });
+        shipCount += 1;
+      }
     }
   };
 

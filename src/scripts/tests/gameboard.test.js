@@ -2,27 +2,42 @@ import GameBoard from '../gameboard';
 
 test('if board contains a 10x10 square', () => {
   const board = GameBoard();
-  for (let i = 0; i < board.length; i++) {
-    expect(board.board[i].length).toBe(10);
-  }
+  expect(
+    board.board[0].length && board.board[9].length && board.board.length,
+  ).toBe(10);
 });
 
-test('check ship placement horizontal', () => {
+test('check ship placement horizontal with length of 5', () => {
   const board = GameBoard();
-  board.placeShip(5, 'horizontal', 0, 0);
-  let startCoord = 0;
-  for (let i = 0; i < 5; i++) {
-    expect(board.board[startCoord][0]).toBe('ship');
-    startCoord += 1;
-  }
+  const coord = [0, 0];
+  board.placeShip(5, 'horizontal', coord);
+  expect(board.board[0][0] && board.board[0][4]).toBeTruthy();
 });
 
-test('check ship placement vertical', () => {
+test('check ship placement vertical with length of 4', () => {
   const board = GameBoard();
-  board.placeShip(5, 'vertical', 0, 0);
-  let startCoord = 0;
-  for (let i = 0; i < 5; i++) {
-    expect(board.board[0][startCoord]).toBe('ship');
-    startCoord += 1;
-  }
+  const coord = [0, 0];
+  board.placeShip(4, 'vertical', coord);
+  expect(board.board[0][0] && board.board[3][0]).toBeTruthy();
+});
+
+test('invalid ship placement, stops the placement, horizontal', () => {
+  const board = GameBoard();
+  const coord = [0, 8];
+  board.placeShip(5, 'horizontal', coord);
+  expect(board.board[0][8] && board.board[0][9]).toBe(0);
+});
+
+test('invalid ship placement, stops the placement, vertical', () => {
+  const board = GameBoard();
+  const coord = [6, 0];
+  board.placeShip(5, 'vertical', coord);
+  expect(board.board[7][0] && board.board[8][0] && board.board[9][0]).toBe(0);
+});
+
+test('ship already exists on the coordinate', () => {
+  const board = GameBoard();
+  const coord = [0, 0];
+  board.placeShip(5, 'horizontal', coord);
+  expect(board.placeShip(5, 'horizontal', coord)).toBe(false);
 });
