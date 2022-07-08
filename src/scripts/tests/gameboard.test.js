@@ -41,3 +41,12 @@ test('ship already exists on the coordinate', () => {
   board.placeShip(5, 'horizontal', coord);
   expect(board.placeShip(5, 'horizontal', coord)).toBe(false);
 });
+
+test('ship recieves an attack', () => {
+  const board = GameBoard();
+  board.placeShip(5, 'horizontal', [0, 0]);
+  board.recieveAttack(0, 0);
+  expect(board.board[0][0].ship.shipBody[board.board[0][0].shipCount]).toBe(
+    'hit',
+  );
+});

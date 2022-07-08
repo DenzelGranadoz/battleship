@@ -34,10 +34,15 @@ const GameBoard = () => {
     }
   };
 
+  const recieveAttack = (x, y) => {
+    board[x][y].ship.hit(board[x][y].shipCount);
+  };
+
   createBoard();
   return {
     board,
     placeShip,
+    recieveAttack,
   };
 };
 
