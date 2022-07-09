@@ -51,9 +51,16 @@ test('ship recieves an attack', () => {
   );
 });
 
-test('ship recieves an attack', () => {
+test('attack misses', () => {
   const board = GameBoard();
   board.placeShip(5, 'horizontal', [0, 0]);
   board.recieveAttack(1, 0);
   expect(board.board[1][0]).toBe('miss');
+});
+
+test('invalid attack on already missed or hit coordinates', () => {
+  const board = GameBoard();
+  board.placeShip(5, 'horizontal', [0, 0]);
+  board.recieveAttack(1, 0);
+  expect(board.recieveAttack(1, 0)).toBe(false);
 });
