@@ -50,3 +50,10 @@ test('ship recieves an attack', () => {
     'hit',
   );
 });
+
+test('ship recieves an attack', () => {
+  const board = GameBoard();
+  board.placeShip(5, 'horizontal', [0, 0]);
+  board.recieveAttack(1, 0);
+  expect(board.board[1][0]).toBe('miss');
+});

@@ -35,7 +35,12 @@ const GameBoard = () => {
   };
 
   const recieveAttack = (x, y) => {
-    board[x][y].ship.hit(board[x][y].shipCount);
+    if (board[x][y] === 'miss' || board[x][y] === 'hit') return false;
+    if (board[x][y]) {
+      board[x][y].ship.hit(board[x][y].shipCount);
+    } else {
+      board[x][y] = 'miss';
+    }
   };
 
   createBoard();
