@@ -6,12 +6,14 @@ const Ship = (l) => {
 
   const hit = (position) => {
     if (shipBody[position] === 'hit') return false;
-    shipBody.splice(position, 0, 'hit');
+    shipBody.splice(position, 1, 'hit');
     hitCount += 1;
   };
 
   const isSunk = () => {
-    if (shipBody.length === hitCount) return true;
+    let sunk = false;
+    if (shipBody.length === hitCount) sunk = true;
+    return sunk;
   };
 
   return {
