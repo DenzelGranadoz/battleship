@@ -64,3 +64,34 @@ test('invalid attack on already missed or hit coordinates', () => {
   board.recieveAttack(1, 0);
   expect(board.recieveAttack(1, 0)).toBe(false);
 });
+
+test('check if ship has been sunk', () => {
+  const board = GameBoard();
+  board.placeShip(2, 'vertical', [0, 0]);
+  board.recieveAttack(0, 0);
+  board.recieveAttack(1, 0);
+  expect(
+    board.board[0][0].ship.isSunk() && board.board[1][0].ship.isSunk(),
+  ).toBe(true);
+});
+
+test('check if ALL ships has been sunk', () => {
+  const board = GameBoard();
+  board.placeShip(2, 'vertical', [0, 0]);
+  board.placeShip(2, 'horizontal', [5, 5]);
+  board.recieveAttack(0, 0);
+  board.recieveAttack(1, 0);
+  board.recieveAttack(5, 5);
+  board.recieveAttack(5, 6);
+  expect(board.allShipSunk(board.board)).toBe(true);
+});
+
+test('check if NOT all ships has been sunk', () => {
+  const board = GameBoard();
+  board.placeShip(2, 'vertical', [0, 0]);
+  board.placeShip(2, 'horizontal', [5, 5]);
+  board.recieveAttack(0, 0);
+  board.recieveAttack(1, 0);
+  board.recieveAttack(5, 6);
+  expect(board.allShipSunk(board.board)).toBe(false);
+});

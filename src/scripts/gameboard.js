@@ -43,11 +43,24 @@ const GameBoard = () => {
     }
   };
 
+  const allShipSunk = (arrBoard) => {
+    let shipsNotSunk = false;
+    arrBoard.forEach((arr) => {
+      arr.forEach((coordinate) => {
+        if (coordinate === 0 || coordinate === 'miss' || coordinate === 'hit')
+          return;
+        if (coordinate.ship.isSunk() === false) shipsNotSunk = true;
+      });
+    });
+    return !shipsNotSunk;
+  };
+
   createBoard();
   return {
     board,
     placeShip,
     recieveAttack,
+    allShipSunk,
   };
 };
 
