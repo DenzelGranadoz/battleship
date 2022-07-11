@@ -11,6 +11,8 @@
         "prefer-template": "warn",
         "no-plusplus": "warn",
         "no-undef": "warn",
-        "consistent-return": "off"
+        "consistent-return": "off",
+        "no-unneeded-ternary": "warn",
+        "no-loop-func": "warn"
     }
 }
