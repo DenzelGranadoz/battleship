@@ -11,19 +11,19 @@ const GameBoard = () => {
     }
   };
 
-  const reserveTiles = (l, coord) => {
-    const x = coord[0] - 1;
-    const y = coord[1] - 1;
-    if (x >= 0 && x <= 9) {
-      // reserves surrounding top & bottom part
-      for (let i = y; i < y + l + 2; i++) {
-        board[x][i] = 'reserved';
-        board[x + 2][i] = 'reserved';
-      }
-      // reserves the left and right most tiles
-      board[x + 1][y] = 'reserved';
-      board[x + 1][y + l + 1] = 'reserved';
+  const reserveTiles = (x, y) => {
+    function cell(n1, n2) {
+      if (x + n1 > 9 || x + n1 < 0) return;
+      if (board[x + n1][y + n2] === 0) board[x + n1][y + n2] = 'reserved';
     }
+    function reserveCell(row) {
+      cell(row, -1);
+      cell(row, 0);
+      cell(row, 1);
+    }
+    reserveCell(-1);
+    reserveCell(0);
+    reserveCell(1);
   };
 
   const placeShip = (length, direction, coord) => {
@@ -36,9 +36,9 @@ const GameBoard = () => {
       let shipCount = 0;
       for (let i = y; i < y + ship.length; i++) {
         board[x].splice(i, 1, { ship, shipCount });
+        reserveTiles(x, y + shipCount);
         shipCount += 1;
       }
-      reserveTiles(length, coord);
     }
     if (direction === 'vertical') {
       if (x + ship.length > 10) return false;
@@ -52,10 +52,10 @@ const GameBoard = () => {
 
   const recieveAttack = (x, y) => {
     if (board[x][y] === 'miss' || board[x][y] === 'hit') return false;
-    if (board[x][y]) {
-      board[x][y].ship.hit(board[x][y].shipCount);
-    } else {
+    if (!board[x][y] || board[x][y] === 'reserved') {
       board[x][y] = 'miss';
+    } else {
+      board[x][y].ship.hit(board[x][y].shipCount);
     }
   };
 

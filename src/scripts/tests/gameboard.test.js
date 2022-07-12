@@ -42,17 +42,17 @@ test('ship already exists on the coordinate', () => {
   expect(board.placeShip(5, 'horizontal', coord)).toBe(false);
 });
 
-test('tiles around ship is reserved, placed at 1,1 horizontal', () => {
+test('tiles around ship is reserved, placed at 0,0 to 0,3 horizontal', () => {
   const board = GameBoard();
-  const coord = [1, 1];
+  const coord = [0, 0];
   board.placeShip(4, 'horizontal', coord);
   expect(
-    board.board[0][0] &&
-      board.board[2][0] &&
-      board.board[0][5] &&
-      board.board[2][5] &&
+    board.board[0][4] &&
       board.board[1][0] &&
-      board.board[1][5],
+      board.board[1][1] &&
+      board.board[1][2] &&
+      board.board[1][3] &&
+      board.board[1][4],
   ).toBe('reserved');
 });
 
