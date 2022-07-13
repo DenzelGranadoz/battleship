@@ -26,9 +26,7 @@ const GameBoard = () => {
     reserveCell(1);
   };
 
-  const placeShip = (length, direction, coord) => {
-    const x = coord[0];
-    const y = coord[1];
+  const placeShip = (length, direction, x, y) => {
     if (board[x][y]) return false;
     const ship = Ship(length);
     if (direction === 'horizontal') {
@@ -52,6 +50,7 @@ const GameBoard = () => {
 
   const recieveAttack = (x, y) => {
     if (board[x][y] === 'miss' || board[x][y] === 'hit') return false;
+    // split this and mark reserved coordinate as a special miss
     if (!board[x][y] || board[x][y] === 'reserved') {
       board[x][y] = 'miss';
     } else {
