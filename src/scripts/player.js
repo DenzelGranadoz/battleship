@@ -14,6 +14,29 @@ const Player = (n) => {
     }
   };
 
+  const attacksMade = [{}];
+
+  const randomAttack = (enemyPlayer, enemyBoard) => {
+    if (!turn) return false;
+    const coordinates = { x: undefined, y: undefined };
+    let x = 0;
+    while (x < 100) {
+      coordinates.x = Math.floor(Math.random() * 10);
+      coordinates.y = Math.floor(Math.random() * 10);
+      if (
+        !attacksMade.some(
+          (attacks) =>
+            attacks.x === coordinates.x && attacks.y === coordinates.y,
+        )
+      ) {
+        attacksMade.push(coordinates);
+        attack(enemyPlayer, enemyBoard, coordinates.x, coordinates.y);
+        break;
+      }
+      x++;
+    }
+  };
+
   return {
     name,
     get isTurn() {
@@ -24,6 +47,8 @@ const Player = (n) => {
     },
     swapTurn,
     attack,
+    attacksMade,
+    randomAttack,
   };
 };
 

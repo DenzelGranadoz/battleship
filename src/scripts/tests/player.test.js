@@ -29,9 +29,25 @@ test('player can take turns playing the game, attacking enemy gameboard', () => 
 
   p1Board.placeShip(4, 'horizontal', 0, 0);
   p2.attack(p1, p1Board, 2, 0);
+  p2.attack(p1, p1Board, 2, 1);
 
   expect(p2Board.board[0][0].ship.shipBody[p2Board.board[0][0].shipCount]).toBe(
     'hit',
   );
   expect(p1Board.board[2][0]).toBe('miss');
+});
+
+test('computer attack only happens when its turn is true', () => {
+  const p1 = Player('Denz');
+  const computer = Player('Computer');
+
+  const p1Board = GameBoard();
+  const p2Board = GameBoard();
+
+  computer.swapTurn(p1);
+
+  p1.attack(computer, p2Board, 5, 5);
+  computer.randomAttack(p1, p1Board);
+
+  expect(computer.attacksMade.length).toBe(2);
 });
