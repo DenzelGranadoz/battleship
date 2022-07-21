@@ -13,6 +13,8 @@
         "no-undef": "warn",
         "consistent-return": "off",
         "no-unneeded-ternary": "warn",
-        "no-loop-func": "warn"
+        "no-loop-func": "warn",
+        "no-param-reassign": "warn",
+        "no-unused-expressions": "warn"
     }
 }
