@@ -1,0 +1,121 @@
+@font-face {
+  font-family: 'ArmaliteRifle';
+  src: url('../assets/armalite_rifle-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+*,
+*::before,
+*::after {
+  font-family: inherit;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'ArmaliteRifle', 'sans-serif';
+}
+
+/* header */
+.image-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  height: 12rem;
+}
+
+.faq {
+  position: absolute;
+  right: 0;
+  padding: 2rem;
+  text-decoration: underline;
+  font-size: 1.25rem;
+}
+
+.faq:hover {
+  cursor: pointer;
+}
+
+.title-icon {
+  height: 100%;
+}
+
+/* boards */
+.main-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: 100%;
+}
+
+.board-name-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.board-name-container h1 {
+  text-decoration: underline;
+  font-size: 2rem;
+}
+
+.board-container {
+  border: 4px solid black;
+  margin: 5rem;
+  margin-top: 1.5rem;
+  display: grid;
+  grid-template: repeat(10, 1fr) / repeat(10, 1fr);
+}
+
+.cell {
+  height: 3rem;
+  width: 3rem;
+  border: 1px solid black;
+}
+
+.cell-hover:hover {
+  background-color: #ff000090;
+}
+
+.cell-missed{
+  height: 0.7rem;
+  width: 0.7rem;
+  background-color: #808080;
+  border-radius: 50%;
+  margin: 18px auto;
+}
+
+.cell-hit {
+  height: 2rem;
+  width: 2rem;
+  padding: .5rem;
+  border: solid 0.2em #c00;
+  border-radius: 50%;
+  align-items: center;
+  margin: 8px auto;
+  background-color: #c00;
+  background-clip: content-box;
+}
+
+.cell-sunk {
+  background-color: #d3d3d3;
+}
+
+/* footer */
+.footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 2rem;
+  text-align: center;
+}
+
+.footer-contents span a{
+  color: black;
+  text-decoration: none;
+}
+
+.footer-contents span:nth-child(2) {
+  padding: 0 2rem;
+}
