@@ -150,6 +150,10 @@ body {
   background-clip: content-box;
 }
 
+.cell-hit-bg {
+  background-color: #ffcccb;
+}
+
 .cell-sunk {
   background-color: #d3d3d390;
 }

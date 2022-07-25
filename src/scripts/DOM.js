@@ -1,3 +1,11 @@
+import GameBoard from './gameboard';
+import Player from './player';
+
+let player;
+let computer;
+let playerBoard;
+let computerBoard;
+
 function clearShips(board) {
   board.board.forEach((row, x) => {
     row.forEach((cell, y) => {
@@ -39,6 +47,7 @@ function renderShips(board) {
 }
 
 function activateComputerBoard() {
+  computerBoard.randomFleet();
   const startContainer = document.getElementById('startContainer');
   const boardName = document.getElementById('computerBoard');
   boardName.removeChild(startContainer);
@@ -48,21 +57,63 @@ function activateComputerBoard() {
   mainContainer.removeChild(placeContainer);
 }
 
-function addBtnListener(p1Board) {
+function addBtnListener() {
   const randomBtn = document.getElementById('randomBtn');
   randomBtn.addEventListener('click', () => {
-    renderShips(p1Board);
+    renderShips(playerBoard);
   });
 
   const resetBtn = document.getElementById('resetBtn');
   resetBtn.addEventListener('click', () => {
-    resetBoard(p1Board);
+    resetBoard(playerBoard);
   });
 
   const startBtn = document.getElementById('startBtn');
   startBtn.addEventListener('click', () => {
-    activateComputerBoard();
+    activateComputerBoard(computerBoard);
   });
+}
+
+function updateBoard(boardName, board) {
+  board.board.forEach((row, x) => {
+    row.forEach((cell, y) => {
+      const selectedCell = document.querySelector(
+        `#${boardName} [data-x="${x}"][data-y ="${y}"]`,
+      );
+      if (cell.ship) {
+        if (
+          cell.ship.shipBody[cell.shipCount] === 'hit' &&
+          !selectedCell.classList.contains('marked')
+        ) {
+          const hitDiv = document.createElement('div');
+          hitDiv.classList.add('cell-hit');
+          selectedCell.appendChild(hitDiv);
+          selectedCell.classList.remove('cell-hover');
+          selectedCell.classList.add('cell-hit-bg');
+          selectedCell.classList.add('marked');
+        }
+      } else if (
+        cell === 'miss' &&
+        !selectedCell.classList.contains('marked')
+      ) {
+        const missDiv = document.createElement('div');
+        missDiv.classList.add('cell-missed');
+        selectedCell.appendChild(missDiv);
+        selectedCell.classList.remove('cell-hover');
+        selectedCell.classList.add('marked');
+      }
+    });
+  });
+}
+
+function attackEvent(cell) {
+  const x = cell.getAttribute('data-x');
+  const y = cell.getAttribute('data-y');
+  player.attack(computer, computerBoard, x, y);
+  updateBoard('computerBoard', computerBoard);
+  cell.style.pointerEvents = 'none';
+  computer.randomAttack(player, playerBoard);
+  updateBoard('playerBoard', playerBoard);
 }
 
 function initializeBoard(board) {
@@ -78,8 +129,8 @@ function initializeBoard(board) {
         cell.classList.add('cell-hover');
 
         cell.addEventListener('click', (e) => {
-          // attackEvent(e.target);
-          console.log(cell);
+          attackEvent(e.target);
+          console.log(e.target);
         });
       } else if (board === 'playerBoard') {
         boardClass.classList.add('cell-blur');
@@ -96,4 +147,17 @@ function initializeBoard(board) {
   }
 }
 
-export { addBtnListener, initializeBoard };
+function init() {
+  player = Player('You');
+  computer = Player('Computer');
+
+  playerBoard = GameBoard();
+  computerBoard = GameBoard();
+
+  computer.swapTurn(player); // start off the game with player turn
+  initializeBoard('playerBoard');
+  initializeBoard('computerBoard');
+  addBtnListener();
+}
+
+export default init;
