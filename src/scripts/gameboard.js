@@ -31,6 +31,9 @@ const GameBoard = () => {
     const ship = Ship(length);
     if (direction === 'horizontal') {
       if (y + ship.length > 10) return false;
+      for (let i = 0; i < length; i++) {
+        if (board[x][y + i] === 'reserved') return false;
+      }
       let shipCount = 0;
       for (let i = y; i < y + ship.length; i++) {
         board[x].splice(i, 1, { ship, shipCount });
@@ -40,9 +43,13 @@ const GameBoard = () => {
     }
     if (direction === 'vertical') {
       if (x + ship.length > 10) return false;
+      for (let i = 0; i < length; i++) {
+        if (board[x + i][y] === 'reserved') return false;
+      }
       let shipCount = 0;
       for (let i = x; i < x + ship.length; i++) {
         board[i].splice(y, 1, { ship, shipCount });
+        reserveTiles(x + shipCount, y);
         shipCount += 1;
       }
     }
@@ -75,12 +82,40 @@ const GameBoard = () => {
     return !shipsNotSunk;
   };
 
+  const randomShip = (l) => {
+    const x = Math.floor(Math.random() * 10);
+    const y = Math.floor(Math.random() * 10);
+    let dir = Math.round(Math.random());
+
+    if (dir === 0) {
+      dir = 'horizontal';
+      if (placeShip(l, dir, x, y) === false) return false;
+    }
+
+    if (dir === 1) {
+      dir = 'vertical';
+      if (placeShip(l, dir, x, y) === false) return false;
+    }
+  };
+
+  const randomFleet = () => {
+    for (let i = 2; i < 6; i++) {
+      for (let j = 0; j < 2; ) {
+        if (randomShip(i) === false) continue;
+        if (i !== 3) break; // only the length of 3 ship will loop twice
+        j++;
+      }
+    }
+  };
+
   createBoard();
   return {
     board,
+    createBoard,
     placeShip,
     recieveAttack,
     allShipSunk,
+    randomFleet,
   };
 };
 
