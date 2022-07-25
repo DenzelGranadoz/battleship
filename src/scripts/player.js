@@ -9,8 +9,10 @@ const Player = (n) => {
 
   const attack = (enemyPlayer, enemyBoard, x, y) => {
     if (turn) {
-      swapTurn(enemyPlayer);
       enemyBoard.recieveAttack(x, y);
+      if (enemyBoard.board[x][y] === 'miss') {
+        swapTurn(enemyPlayer);
+      }
     }
   };
 

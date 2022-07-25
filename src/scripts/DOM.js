@@ -6,6 +6,14 @@ let computer;
 let playerBoard;
 let computerBoard;
 
+function delay(delayInMs) {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve(2);
+    }, delayInMs);
+  });
+}
+
 function clearShips(board) {
   board.board.forEach((row, x) => {
     row.forEach((cell, y) => {
@@ -48,6 +56,7 @@ function renderShips(board) {
 
 function activateComputerBoard() {
   computerBoard.randomFleet();
+  console.log(computerBoard);
   const startContainer = document.getElementById('startContainer');
   const boardName = document.getElementById('computerBoard');
   boardName.removeChild(startContainer);
@@ -106,14 +115,43 @@ function updateBoard(boardName, board) {
   });
 }
 
-function attackEvent(cell) {
+function displayWinner(winner) {
+  const msgContainer = document.getElementById('winContainer');
+  const message = document.getElementById('message');
+  const playAgain = document.getElementById('playAgain');
+  playAgain.addEventListener('click', () => {
+    window.location.reload();
+  });
+  if (winner === 'player') {
+    message.textContent = 'You have destroyed enemy fleet!';
+  } else {
+    message.textContent = 'Your fleet has been destroyed!';
+  }
+  msgContainer.classList.toggle('hide');
+}
+
+async function attackEvent(cell) {
   const x = cell.getAttribute('data-x');
   const y = cell.getAttribute('data-y');
   player.attack(computer, computerBoard, x, y);
+  await delay(150);
+  // if ship sunk
+  // make edge coordinates as miss
+  // updateboard
+
   updateBoard('computerBoard', computerBoard);
   cell.style.pointerEvents = 'none';
-  computer.randomAttack(player, playerBoard);
-  updateBoard('playerBoard', playerBoard);
+  if (computerBoard.allShipSunk(computerBoard.board)) {
+    displayWinner('player');
+  }
+  while (computer.isTurn) {
+    await delay(150);
+    computer.randomAttack(player, playerBoard);
+    updateBoard('playerBoard', playerBoard);
+    if (playerBoard.allShipSunk(playerBoard.board)) {
+      displayWinner('computer');
+    }
+  }
 }
 
 function initializeBoard(board) {
@@ -130,7 +168,6 @@ function initializeBoard(board) {
 
         cell.addEventListener('click', (e) => {
           attackEvent(e.target);
-          console.log(e.target);
         });
       } else if (board === 'playerBoard') {
         boardClass.classList.add('cell-blur');
