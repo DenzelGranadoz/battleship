@@ -8,212 +8,41 @@
   <script defer src="main.js"></script>
 </head>
 <body>
+  <div class="place-ships">
+
+  </div>
   <!-- header -->
   <div class="image-container" id="imageContainer">
     <img src="" alt="Battleship Icon" class="title-icon">
     <div class="faq">How to Play?</div>
   </div>
 
-  <!-- boards ***to add label divs-->
+  <!-- boards -->
   <div class="main-section">
-    <div class="board-name-container">
-      <h1>You</h1>
-      <div class="board-container player-board">
-        <div class="cell"><div class="cell-missed"></div></div>
-        <div class="cell"><div class="cell-missed"></div></div>
-        <div class="cell"><div class="cell-missed"></div></div>
-        <div class="cell"><div class="cell-missed"></div></div>
-        <div class="cell cell-hover"></div>
-        <div class="cell cell-hover"></div>
-        <div class="cell cell-hover"></div>
-        <div class="cell cell-hover"></div>
-        <div class="cell cell-hover"></div>
-        <div class="cell cell-hover"></div>
-        
-        <div class="cell cell-sunk"><div class="cell-hit"></div></div>
-        <div class="cell cell-sunk"><div class="cell-hit"></div></div>
-        <div class="cell cell-sunk"><div class="cell-hit"></div></div>
-        <div class="cell"><div class="cell-missed"></div></div>
-
-        <div class="cell cell-hover"></div>
-        <div class="cell"><div class="cell-missed"></div></div>
-        <div class="cell"><div class="cell-missed"></div></div>
-        <div class="cell"><div class="cell-missed"></div></div>
-        <div class="cell"><div class="cell-missed"></div></div>
-
-        <div class="cell"><div class="cell-missed"></div></div>
-        <div class="cell"><div class="cell-missed"></div></div>
-        <div class="cell"><div class="cell-missed"></div></div>
-        <div class="cell"><div class="cell-missed"></div></div>
-        <div class="cell"><div class="cell-missed"></div></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div><div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div><div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div><div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"><div class="cell-hit"></div></div>
-
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"><div class="cell-hit"></div></div>
-
-        <div class="cell"></div><div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"><div class="cell-hit"></div></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div><div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div><div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"><div class="cell-hit"></div></div>
-        <div class="cell"><div class="cell-hit"></div></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div><div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
+    <div class="board-name-container" id="playerContainer">
+      <h1 class="your-name">Your Fleet</h1>
+      <div class="board-container player-board" id="playerBoard">
+      </div>
+      <div class="place-container" id="placeContainer">
+        <div class="btn-container">
+          <button class="btn random-btn" id="randomBtn">Random Board</button>
+          <button class="btn reset-btn" id="resetBtn">Reset Board</button>
+        </div>
+        <div class="ships">
+        </div>
       </div>
     </div>
     <div class="board-name-container">
-      <h1>Computer</h1>
-      <div class="board-container computer-board">
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div><div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div><div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div><div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div><div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div><div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div><div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div><div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div><div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div><div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
-        <div class="cell"></div>
+      <h1 class="computer-name">Computer's Fleet</h1>
+      <div class="board-container computer-board" id="computerBoard">
+        <!-- <div class="cell"><div class="cell-missed"></div></div>
+        <div class="cell cell-hover"></div>
+        <div class="cell"><div class="cell-hit"></div></div> -->
+        <div class="start-container" id="startContainer">
+          <button class="btn start-btn hide" id="startBtn">Start</button>
+        </div>
       </div>
+      
     </div>
   </div>
 
