@@ -38,7 +38,7 @@ To get this project up and running locally, follow the steps below:
 
 ## Features
 
-- Drag and Drop ship placement.
+- Drag and Drop ship placement, Tiles around ship placed is marked as reserved and highlighted red, prevents ship placement.
 - How to play Popup menu containing guidelines with sliding animation.
 - Supports Mobile Devices.
 - A hit on the enemy ship is marked as a bullseye.
