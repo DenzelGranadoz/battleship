@@ -39,7 +39,6 @@ body {
   z-index: 1;
   height: 3rem;
   width: 3rem;
-  border: 1px solid #a9a9a9;
   background-color: white;
   border: 3px solid #60a4a6;
 }
@@ -290,7 +289,7 @@ body {
 }
 
 .reserved {
-  background-color: #0D98BA70;
+  background-color: #ff000085;
 }
 
 .hide {
@@ -313,4 +312,167 @@ body {
 
 .footer-contents span:nth-child(2) {
   padding: 0 2rem;
+}
+
+@media only screen and (max-width: 1300px) {
+  .place-cell {
+    z-index: 1;
+    height: 2rem;
+    width: 2rem;
+    background-color: white;
+    border: 3px solid #60a4a6;
+  }
+  
+  /* header */
+  .image-container {
+    height: 8rem;
+  }
+  
+  .faq-container {
+    font-size: 1rem;
+  }
+
+  .close-btn {
+    font-size: 1.25rem;
+  }
+  
+  .popup-content h1 {
+    font-size: 2.5rem;
+  }
+
+  .popup-content p {
+    font-size: 1rem;
+    line-height: 2rem;
+  }
+  
+  /* boards */
+  .board-name-container h1 {
+    text-decoration: underline;
+    font-size: 1.5rem;
+  }
+  
+  .start-btn {
+    font-size: 1.5rem;
+  }
+  
+  
+  .cell {
+    height: 2rem;
+    width: 2rem;
+  }
+  
+  .cell-missed{
+    height: 0.5rem;
+    width: 0.5rem;
+    margin: 11px auto;
+  }
+  
+  .cell-hit {
+    height: 1.25rem;
+    width: 1.25rem;
+    padding: .3rem;
+    margin: 6px auto;
+  }
+  
+  .win-message h1{
+    font-size: 1.5rem;
+  }
+  
+  .play-again {
+    margin: 1.75rem;
+    font-size: 1.5rem;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .place-ships {
+    display: none;
+  }
+
+  /* header */
+  .image-container {
+    height: 6rem;
+    margin-left: 3rem;
+  }
+  
+  .faq-container {
+    position: relative;
+    right: 0;
+    margin: 0;
+    font-size: 0.75rem;
+  }
+
+  .close-btn {
+    font-size: 1rem;
+  }
+  
+  
+  .popup-content h1 {
+    font-size: 2.25rem;
+  }
+  
+  .popup-content p {
+    font-size: 1rem;
+    line-height: 1.75rem;
+  }
+  
+  /* boards */
+  .main-section {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .board-name-container h1 {
+    text-decoration: underline;
+    font-size: 1.25rem;
+  }
+  
+  .btn {
+    padding: 0.4rem;
+  }
+  
+  .start-btn {
+    font-size: 1.5rem;
+    padding: 0.9rem;
+  }
+  
+  .cell {
+    height: 2rem;
+    width: 2rem;
+  }
+  
+  .cell-missed{
+    height: 0.5rem;
+    width: 0.5rem;
+    margin: 11px auto;
+  }
+  
+  .cell-hit {
+    height: 1.25rem;
+    width: 1.25rem;
+    padding: .3rem;
+    margin: 6px auto;
+  }
+
+  .win-message h1{
+    font-size: 1.3rem;
+  }
+  
+  .play-again {
+    margin: 1.5rem;
+    font-size: 1.2rem;
+  }
+  
+  /* footer */
+  .footer {
+    position: relative;
+  }
+  
+  .footer-contents span {
+    font-size: 0.75rem
+  }
+  
+  .footer-contents span:nth-child(2) {
+    padding: 0 0.5rem;
+  }
 }
