@@ -9,12 +9,30 @@
 </head>
 <body>
   <div class="place-ships">
-
+    <div class="ship-factory">
+    </div>
   </div>
+
+  <div class="popup">
+    <div class="popup-overlay"></div>
+    <div class="main-popup">
+      <div class="popup-content">
+        <span class="close-btn">Close</span>
+        <h1>Rules of the Sea</h1>
+        <p>
+          The Goal is to sink the opponent's fleet. Both players take turns firing shots in an attempt to hit an enemy ship.
+        </p>
+        <p>A hit on an enemy ship is marked with a bullseye and grants the player another turn.</p>
+        <p>Both boards and ship placements cannot be seen by the enemy player and a missed shot is marked with a dot</p>
+        <p>First player to sink all the opponent's ships wins the game!</p>
+      </div>
+    </div>
+  </div>
+</div>
   <!-- header -->
   <div class="image-container" id="imageContainer">
     <img src="" alt="Battleship Icon" class="title-icon">
-    <div class="faq">How to Play?</div>
+    <div class="faq-container">How to Play?</div>
   </div>
 
   <!-- boards -->
@@ -35,9 +53,6 @@
     <div class="board-name-container">
       <h1 class="computer-name">Computer's Fleet</h1>
       <div class="board-container computer-board" id="computerBoard">
-        <!-- <div class="cell"><div class="cell-missed"></div></div>
-        <div class="cell cell-hover"></div>
-        <div class="cell"><div class="cell-hit"></div></div> -->
         <div class="start-container" id="startContainer">
           <button class="btn start-btn hide" id="startBtn">Start</button>
         </div>

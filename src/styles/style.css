@@ -18,6 +18,38 @@ body {
   background-color: #e9eef4;
 }
 
+.place-ships {
+  position: absolute;
+  height: 100%;
+  width: 100%; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.ship {
+  display: flex;
+}
+
+.ship:hover {
+  cursor: move;
+} 
+
+.place-cell {
+  z-index: 1;
+  height: 3rem;
+  width: 3rem;
+  border: 1px solid #a9a9a9;
+  background-color: white;
+  border: 3px solid #60a4a6;
+}
+
+
+.flex {
+  display: flex;
+}
+
+
 /* header */
 .image-container {
   position: relative;
@@ -26,7 +58,7 @@ body {
   height: 12rem;
 }
 
-.faq {
+.faq-container {
   position: absolute;
   right: 0;
   padding: 2rem;
@@ -34,8 +66,76 @@ body {
   font-size: 1.25rem;
 }
 
-.faq:hover {
+.faq-container:hover {
   cursor: pointer;
+}
+
+.popup {
+	position: absolute;
+	width: 100%;
+	height: 100vh;
+	display: none;
+	justify-content: center;
+	align-items: center;
+	overflow: hidden;
+}
+.popup-overlay {
+	height: 100vh;
+	width: 100%;
+	position: absolute;
+}
+.main-popup {
+	position: absolute;
+	left: 0;
+	height: 100vh;
+	width: 100%;
+	z-index: 1;
+	background: #e9eef4;
+	padding: 30px 20px;
+	line-height: 1rem;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	transform: translateX(-100%);
+}
+.close-btn {
+	padding: 10px;
+	position: absolute;
+	top: 1rem;
+	right: 1rem;
+	font-size: 2rem;
+	cursor: pointer;
+	transition: .5s ease all;
+}
+
+.popup-content {
+  text-align: center;
+}
+
+.popup-content h1 {
+  font-size: 3rem;
+}
+
+
+.popup-content p {
+	font-size: 1.5rem;
+	line-height: 2rem;
+}
+@keyframes slide-in {
+	0% {
+		transform: translateX(-100%);
+	}
+	100% {
+		transform: translateX(0);
+	}
+}
+@keyframes slide-out {
+	0% {
+		transform: translateX(0);
+	}
+	100% {
+		transform: translateX(-100%);
+	}
 }
 
 .title-icon {
@@ -187,6 +287,10 @@ body {
 .play-again {
   margin: 2rem;
   font-size: 2.5rem;
+}
+
+.reserved {
+  background-color: #0D98BA70;
 }
 
 .hide {
