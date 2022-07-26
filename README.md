@@ -47,6 +47,7 @@ To get this project up and running locally, follow the steps below:
 
 ## Usage
 
+- Pressing on the 'Draggable' ship will change its direction from horizontal to vertical or vice versa.
 - Ships can be Dragged and Dropped but Random ship placement is available with the Random Board Button.
 - Board can be cleared during placement with the Reset Board Button.
 - A Start Button will appear once the ships has been placed.
