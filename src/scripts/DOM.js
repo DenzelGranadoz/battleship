@@ -115,15 +115,20 @@ function removeHighlight() {
   });
 }
 
+function hideRandomReset() {
+  const mainContainer = document.getElementById('playerContainer');
+  const placeContainer = document.getElementById('placeContainer');
+  mainContainer.removeChild(placeContainer);
+}
+
 function activateComputerBoard() {
   computerBoard.randomFleet();
   const startContainer = document.getElementById('startContainer');
   const boardName = document.getElementById('computerBoard');
   boardName.removeChild(startContainer);
-
-  const mainContainer = document.getElementById('playerContainer');
-  const placeContainer = document.getElementById('placeContainer');
-  mainContainer.removeChild(placeContainer);
+  if (shipRendered === 5) {
+    hideRandomReset();
+  }
 }
 
 function hideShipFactory() {
@@ -245,6 +250,7 @@ function renderShips(board, l) {
     addShipRotate();
   } else {
     showStartBtn();
+    hideRandomReset();
   }
 }
 
