@@ -15,6 +15,8 @@
         "no-unneeded-ternary": "warn",
         "no-loop-func": "warn",
         "no-param-reassign": "warn",
-        "no-unused-expressions": "warn"
+        "no-unused-expressions": "warn",
+        "no-continue": "warn",
+        "no-await-in-loop": "warn"
     }
 }
